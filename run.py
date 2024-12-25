@@ -9,7 +9,6 @@ GEMINI_ENDPOINT = f"https://generativelanguage.googleapis.com/v1beta/models/gemi
 @app.route('/ask', methods=['POST'])
 def ask_gemini():
     try:
-        print("hello")
         # Get question from request body
         data = request.get_json()
         question = data.get('question')
@@ -47,4 +46,8 @@ def ask_gemini():
         return jsonify({"error": f"Unexpected error: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Remove the direct Flask run
+    # app.run(debug=True, port=5000)
+    
+    # The app variable will be used by Gunicorn
+    pass
